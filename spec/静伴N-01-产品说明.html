@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>静伴 N-01 · 产品说明</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%231A1A1A'/><circle cx='11' cy='14' r='2.4' fill='%235B8FA8'/><circle cx='21' cy='14' r='2.4' fill='%235B8FA8'/><rect x='9' y='22' width='14' height='1.6' fill='%23B08A5E'/></svg>">
+<style>
+:root{
+  --paper:#F4F3F0;
+  --ink:#1A1A1A;
+  --ink-2:#3C3A36;
+  --gray:#6B6862;
+  --line:#D8D4CC;
+  --sand:#B08A5E;
+  --cool:#3F5F70;
+  --night:#12181C;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:-apple-system,"PingFang SC","Helvetica Neue",sans-serif;
+  font-size:16px;
+  line-height:1.95;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:880px;margin:0 auto;padding:0 32px}
+
+/* ---------- 封面 ---------- */
+.cover{
+  min-height:88vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:80px 0 60px;
+  border-bottom:1px solid var(--line);
+}
+.kicker{
+  font-size:12px;
+  letter-spacing:.18em;
+  color:var(--gray);
+  margin-bottom:36px;
+}
+.cover h1{
+  font-family:Georgia,"Songti SC","Noto Serif SC",serif;
+  font-size:clamp(38px,6vw,64px);
+  line-height:1.18;
+  font-weight:400;
+  letter-spacing:-.01em;
+}
+.cover h1 em{
+  font-style:normal;
+  color:var(--sand);
+}
+.cover .sub{
+  margin-top:28px;
+  max-width:560px;
+  font-size:17px;
+  color:var(--ink-2);
+  line-height:1.85;
+}
+.cover .meta{
+  margin-top:56px;
+  display:flex;
+  gap:40px;
+  flex-wrap:wrap;
+  font-size:12px;
+  letter-spacing:.06em;
+  color:var(--gray);
+}
+.cover .meta b{display:block;color:var(--ink);font-weight:500;font-size:13px;margin-top:4px;letter-spacing:0}
+
+/* ---------- 章节 ---------- */
+.chapter{padding:88px 0 24px;border-bottom:1px solid var(--line)}
+.ch-head{display:flex;gap:20px;align-items:baseline;margin-bottom:44px}
+.ch-num{
+  font-family:Georgia,serif;
+  font-size:13px;
+  letter-spacing:.1em;
+  color:var(--sand);
+  flex:0 0 auto;
+  padding-top:6px;
+}
+.ch-title{
+  font-family:Georgia,"Songti SC","Noto Serif SC",serif;
+  font-size:clamp(26px,3.4vw,34px);
+  font-weight:400;
+  line-height:1.4;
+}
+.ch-lead{
+  font-size:17px;
+  color:var(--ink-2);
+  max-width:660px;
+  margin:-20px 0 44px 0;
+}
+
+h3{
+  font-size:15px;
+  font-weight:600;
+  letter-spacing:.02em;
+  margin:48px 0 14px;
+}
+p{margin-bottom:18px;max-width:660px}
+p.tight{color:var(--ink-2)}
+.small{font-size:14px;color:var(--gray);line-height:1.8;max-width:660px}
+
+/* 引用 */
+.quote{
+  border-left:2px solid var(--sand);
+  padding:2px 0 2px 24px;
+  margin:32px 0;
+  max-width:620px;
+  font-family:Georgia,"Songti SC",serif;
+  font-size:18px;
+  line-height:1.8;
+  color:var(--ink);
+}
+.quote cite{
+  display:block;
+  margin-top:12px;
+  font-style:normal;
+  font-family:-apple-system,sans-serif;
+  font-size:12px;
+  letter-spacing:.06em;
+  color:var(--gray);
+}
+
+/* 清单 */
+.list{margin:20px 0 28px;max-width:660px}
+.list li{
+  list-style:none;
+  padding:13px 0 13px 26px;
+  border-top:1px solid var(--line);
+  position:relative;
+  font-size:15px;
+  color:var(--ink-2);
+}
+.list li:before{
+  content:"";
+  position:absolute;
+  left:2px;top:22px;
+  width:10px;height:1px;
+  background:var(--sand);
+}
+.list li b{color:var(--ink);font-weight:600}
+
+/* 表格 */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:24px 0 28px;
+  font-size:14px;
+  table-layout:fixed;
+}
+th,td{
+  text-align:left;
+  padding:13px 14px;
+  border-bottom:1px solid var(--line);
+  vertical-align:top;
+  line-height:1.7;
+}
+th{
+  font-weight:600;
+  font-size:12px;
+  letter-spacing:.08em;
+  color:var(--gray);
+  border-bottom:1px solid var(--ink);
+  border-top:1px solid var(--ink);
+}
+td:first-child{color:var(--ink);font-weight:500}
+
+/* 图 */
+figure{margin:40px 0 44px}
+figure img{
+  width:100%;
+  display:block;
+  border:1px solid var(--line);
+}
+figcaption{
+  margin-top:12px;
+  font-size:12px;
+  letter-spacing:.04em;
+  color:var(--gray);
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+}
+figcaption span:last-child{flex:0 0 auto;font-variant-numeric:tabular-nums}
+
+/* 暗块 */
+.dark{
+  background:var(--night);
+  color:#E8E6E1;
+  padding:44px 40px;
+  margin:44px -40px;
+}
+.dark h3{color:#fff;margin-top:0}
+.dark p{color:#B8B6B0}
+.dark .list li{border-color:#2A3238;color:#B8B6B0}
+.dark .list li b{color:#E8E6E1}
+.dark .quote{border-color:#5B8FA8;color:#E8E6E1}
+.dark .quote cite{color:#7A8A92}
+
+/* 页脚 */
+.foot{
+  padding:64px 0 96px;
+  font-size:12px;
+  color:var(--gray);
+  letter-spacing:.06em;
+  display:flex;
+  justify-content:space-between;
+  gap:24px;
+  flex-wrap:wrap;
+}
+
+@media (max-width:680px){
+  .wrap{padding:0 20px}
+  .cover{min-height:auto;padding:64px 0 48px}
+  .cover h1{font-size:36px}
+  .cover .meta{gap:20px;margin-top:36px}
+  .chapter{padding:64px 0 16px}
+  .ch-head{flex-direction:column;gap:10px;margin-bottom:32px}
+  .ch-num{padding-top:0}
+  .dark{padding:32px 24px;margin:32px -24px}
+  th,td{padding:10px 8px}
+  table{font-size:13px}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== 封面 ===== -->
+<section class="cover">
+  <div class="wrap">
+    <div class="kicker">静伴 N-01 ｜ 院内安宁疗护床旁单元</div>
+    <h1>它不说话的时候，<br>是最<em>有用</em>的时候。</h1>
+    <p class="sub">一台默认沉默的床旁机器人。它不陪聊，不劝人，不替代谁。它只做一件事——在没有人守着的那些小时里，守着。</p>
+    <div class="meta">
+      <div>产品定位<b>院内 · 单人间 · 床旁</b></div>
+      <div>核心能力<b>趋势记录 / 危机分级 / 极少开口</b></div>
+      <div>文档版本<b>2026.11 ／ 概念稿</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 01 处境 ===== -->
+<section class="chapter">
+  <div class="wrap">
+    <div class="ch-head">
+      <div class="ch-num">01</div>
+      <h2 class="ch-title">处境：夜里那十二个小时</h2>
+    </div>
+    <p class="ch-lead">安宁疗护病房的白天和夜里，是两间不同的病房。</p>
+
+    <p>白天这里很满。医生查房，护士交班，家属来，社工来，心理师来。疼痛被问到，症状被记录，有人说话，有人递水。四全照顾——全人、全家、全队、全程——说的就是这种密度。</p>
+
+    <p>夜里这些都会退场。灯关了，人也走了。剩下床、监护仪、一瓶水、一部扣着的手机，和一个知道自己明天还要再来的人。</p>
+
+    <p>这段时间不短。一个病房的夜班护士要管若干个床位，巡房是按班次排的，不是按需要排的。而疼痛、憋气、恶心、躁动这些症状，是持续变化的——它们不挑查房的时间出现。</p>
+
+    <div class="quote">
+      靠护士巡房间隔记录，中间的空档就是病人硬扛的时间。
+      <cite>安宁疗护临床观察整理</cite>
+    </div>
+
+    <h3>病人在这段时间里，具体在经历什么</h3>
+
+    <p>进入濒死期的病人，身体是系统性关闭的，顺序大致可预测。这些变化里，有几样是护工和谁都帮不上手的：</p>
+
+    <div class="list">
+      <ul>
+        <li><b>呼吸</b>——忽快忽慢、越来越浅。喉头肌肉松弛，分泌物排不出去，会发出“呼噜呼噜”的声音。这是濒死喉音，不是挣扎，但听到的家属会以为他在受苦。</li>
+        <li><b>循环</b>——手脚冰凉，盖被也不回暖。脚底可能出现深紫色花斑。人会一遍一遍地摸他的手，然后不说话。</li>
+        <li><b>意识</b>——反应越来越慢。一部分人出现谵妄，会闹，会觉得有人要害自己。也有少数人一直到最后一刻神志清楚。</li>
+        <li><b>体能</b>——完全卧床。翻身、二便，全靠人。</li>
+      </ul>
+    </div>
+
+    <p>这些都不是急诊。它们不会在某个瞬间爆发然后被抢救回来。它们是慢的、持续的、每小时都在变的——而这恰恰是最难被“巡视”这件事覆盖的东西。一次巡房记录的是一个点，中间那段是空白。</p>
+
+    <h3>而人不在的时候，最容易发生的不是急症</h3>
+
+    <p>是“扛着”。</p>
+
+    <p>不想麻烦人——这四个字在安宁病房里密度极高。病人知道夜班护士一个人管多少床，知道自己按一次铃会惊动谁，知道叫了也未必有用。所以多数时候他们不按。他们等到下一次有人推门进来，再说一句“有点疼”。</p>
+
+    <p>这句话说出来的时候，往往已经过去了两三个小时。</p>
+
+    <div class="dark">
+      <h3>这一章要说明的只有一件事</h3>
+      <p>夜里的问题不是“没有人”。夜里有护士，有值班医生，有监护仪，有随时能按的铃。问题是<strong style="color:#fff">人是间隔出现的，而症状是连续的</strong>。中间那段空白，就是所有事发生的地方。</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== 02 需求 ===== -->
+<section class="chapter">
+  <div class="wrap">
+    <div class="ch-head">
+      <div class="ch-num">02</div>
+      <h2 class="ch-title">需求：为什么必须是机器人</h2>
+    </div>
+    <p class="ch-lead">如果问题只是“夜里没人”，那答案是“多加人”。这一章先把“加人”否掉，再把所有现成的技术选项一个个否掉。全部都否完，才轮得到机器人。</p>
+
+    <h3>先否掉“多加人”</h3>
+
+    <p>一对一陪护在技术上完全可行，问题从来不是可行，是算不过来。一个安宁病区几十张床，每床配一个夜班陪护，人力成本会直接压垮科室预算。护士配比受编制约束，也不是靠一个产品能改的。</p>
+
+    <p><strong>所以正确的问法不是“怎么让那里有人”，而是“怎么让那段空档里，也有人在看着”。</strong>这两个要求的成本差一个数量级。</p>
+
+    <h3>再否掉摄像机</h3>
+
+    <p>摄像机是最便宜的答案：装上就能看，护士站一块屏幕，全都看得见。它被否掉的原因不在技术，在伦理。</p>
+
+    <div class="list">
+      <ul>
+        <li><b>它能看，但不能回应。</b>病人半夜睁着眼，摄像头那头只有一块没人盯的屏幕。被看见和被在乎，是两件事。</li>
+        <li><b>“我知道有人在看着我”这件事，在临终场景里是负担，不是安慰。</b>人会因此不敢翻身、不敢出声、不敢难受。</li>
+        <li><b>夜视补光、红外红点，都会干扰睡眠。</b>一个连睡觉都睡不好的病房，装摄像头的收益是负的。</li>
+      </ul>
+    </div>
+
+    <h3>再否掉呼叫铃</h3>
+
+    <p>呼叫铃是这套系统里最成熟的东西，装了几十年。它唯一的问题是：<strong>它要求病人先做出一个决定。</strong></p>
+
+    <p>而“不想麻烦人”，是这类病人的共性。他们清楚夜班护士一个人管几张床，清楚按一次铃会惊动谁，也清楚叫了之后大概率只是“再等等”。所以多数时候他们不按——不是不知道疼，是判断了“不值得为这点疼惊动别人”。</p>
+
+    <p>更根本的一层：<strong>铃只能承载“求助”，承载不了“难受”。</strong>疼、憋、睡不着、心里发慌——这些不构成求助，但每一件都真实发生。一个只能处理“求助”的装置，接不住这些东西。</p>
+
+    <h3>再否掉手机和家人</h3>
+
+    <p>手机的问题很具体：屏幕亮、要操作、需要对方在线。而这三样在半夜都不成立。更深的问题是，手机是通往外部世界的工具，而一个临终病人此刻要的不是外部世界，是有人在旁边。</p>
+
+    <p>家属的缺位不是不孝，是结构性的：他们要上班、要照顾孩子、要自己扛住。而且安宁疗护的伦理口径明确——<strong>不主动呼叫家属，不替医生谈病情</strong>。把夜里的空缺交给家属，是把一个不该由他们承担的责任推过去。</p>
+
+    <h3>最后否掉“陪聊机器人”</h3>
+
+    <p>这是最容易被想到、也最该被否掉的方向。临床上有明确的提醒：<strong>不要在临终场景里做“替代陪伴”。</strong>人和人的接触在这里有不可替代的价值，机器人去抢这个位置，家属和医护都会抵触。</p>
+
+    <p>它还有另一个问题——一旦开始说话，就会滑向“AI 助手”的俗套：会安慰人、会给建议、会说“我理解你”。在一个知道自己快要死的人面前，这些话是廉价的。</p>
+
+    <p>所以这个产品从头到尾只允许说两句话，两句话都不到十二个字。<strong>它不是不会说，是知道不该说。</strong></p>
+
+    <h3>那么它站的位置</h3>
+
+    <p>把所有替代方案否完之后，剩下的位置很清楚：</p>
+
+    <div class="quote">
+      它不替代人。它替代的是<strong>那段没有人守着的时间</strong>。
+    </div>
+
+    <p>这段空档里能做三件事，都不需要它说话：</p>
+
+    <table>
+      <tr>
+        <th style="width:26%">做什么</th>
+        <th style="width:38%">怎么算做到了</th>
+        <th style="width:36%">为什么这件事需要机器</th>
+      </tr>
+      <tr>
+        <td>记趋势</td>
+        <td>呼吸、体动、离床、夜间的异常，连续记，不是抽样记</td>
+        <td>人按班次记，一晚几个点；机器可以记一整条曲线</td>
+      </tr>
+      <tr>
+        <td>分级判断</td>
+        <td>同一件事，判断它够不够格惊动人。四档，逐级升级</td>
+        <td>人判断会被疲劳和情绪影响；机器只按规则</td>
+      </tr>
+      <tr>
+        <td>极少开口</td>
+        <td>只在触发协议时说话。其余时间一个字都不出</td>
+        <td>这正是人做不到的——人在场就会忍不住说话</td>
+      </tr>
+    </table>
+
+    <h3>于是它解放的不是护士，是护士的时间</h3>
+
+    <p>这一点要说准确。它不减少护士的工作，它把护士从“必须去巡视”里换出来一点，还给“必须由人做的事”。</p>
+
+    <p>安宁疗护病房里，家属沟通占掉一半以上的工作时间：反复问现在什么阶段、接下来会怎样、还能做什么。这些问题的答案机器给不了，也不该给。但护士的时间如果被巡房和记录吃干，就腾不出来谈这些。</p>
+
+    <p><strong>让机器守那些不需要人的小时，人才有时间做只有人能做的事。</strong></p>
+
+    <div class="dark">
+      <h3>这一章的一句话</h3>
+      <p>这个产品成立，靠的不是它能做什么，是它<strong style="color:#fff">替谁扛了那件没人愿意干、又必须有人干的事</strong>——在夜里，连续地，不出声地，看着。</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== 03 产品 ===== -->
+<section class="chapter">
+  <div class="wrap">
+    <div class="ch-head">
+      <div class="ch-num">03</div>
+      <h2 class="ch-title">产品：静伴 N-01</h2>
+    </div>
+    <p class="ch-lead">一台默认安静、不抢陪伴的床旁单元。只在危机或协议触发时开口。</p>
+
+    <div class="quote">
+      默认沉默。偶尔说话。从不替人做决定。
+    </div>
+
+    <figure>
+      <img src="场景资产/机器人-四视图-定稿.png" alt="静伴 N-01 四视图：正面、左侧、背面、左前 45 度">
+      <figcaption><span>正面 / 左侧 / 背面 / 左前 45°</span><span>整机 1.15 m ｜ 头径 0.28 m ｜ 底盘宽 0.40 m</span></figcaption>
+    </figure>
+
+    <h3>形态的五个约束</h3>
+
+    <p>这些约束不是审美选择，每一条都在解决一个具体问题。</p>
+
+    <div class="list">
+      <ul>
+        <li><b>圆润、哑光、无尖角</b>——病房里的东西都会被人撞到。夜间光线弱，尖角是最容易出事的东西。</li>
+        <li><b>整张脸是深色面罩，不是显示屏</b>——会发光的脸在夜里等于一盏灯。文字放在胸前大横屏，脸只用来表达“在场”和“不在看”。</li>
+        <li><b>没有手臂，只有圆形肩块</b>——有手就会让人期待它去扶、去递、去碰。它做不到，也不该承诺。</li>
+        <li><b>屏幕中心离地 0.95 m</b>——高出床面 35 cm。这是病人躺着时能看清、又不需要起身的角度。</li>
+        <li><b>白方底盘加一圈极细青色灯带</b>——夜里唯一的位置标记。不亮到刺眼，但足够让人在黑暗里认出它在哪里。</li>
+      </ul>
+    </div>
+
+    <h3>它做的三件事，按级别</h3>
+
+    <p>所有判断都收敛成四档。级别决定它要不要出声，而不是要不要做事。</p>
+
+    <table>
+      <tr>
+        <th style="width:12%">档位</th>
+        <th style="width:28%">什么时候触发</th>
+        <th style="width:34%">它会做什么</th>
+        <th style="width:26%">会不会惊动人</th>
+      </tr>
+      <tr>
+        <td>L1</td>
+        <td>有变化，但属于可解释范围</td>
+        <td>只记录。进趋势，不提示任何人</td>
+        <td>不惊动</td>
+      </tr>
+      <tr>
+        <td>L2</td>
+        <td>变化偏离基线，但没有危险信号</td>
+        <td>屏幕出一行提示，不出声</td>
+        <td>只惊动看到屏幕的人</td>
+      </tr>
+      <tr>
+        <td>L3</td>
+        <td>出现危险信号</td>
+        <td>开口。屏幕转琥珀色，同时响铃报房号</td>
+        <td>惊动护士站</td>
+      </tr>
+      <tr>
+        <td>L4</td>
+        <td>L3 之后 90 秒无人响应</td>
+        <td>改报“最近的护士在哪里”，不是再响一次</td>
+        <td>惊动到人</td>
+      </tr>
+    </table>
+
+    <p class="small">L4 的设计意图值得单独说一句：重复报警只是更吵，不会更快有人来。报出“谁离得最近”，才是把一个报警变成一次调度。</p>
+
+    <div class="dark">
+      <h3>全产品最硬的一条规则</h3>
+      <p>医护已经标记为<strong style="color:#fff">濒死期</strong>的病人，喉音、呼吸不规则、手脚发凉——<strong style="color:#fff">不触发任何报警</strong>。</p>
+      <p>这三样是濒死期的正常进程，不是病情恶化。一个不懂这件事的系统，会在一个人最后的几个小时里，把整层楼的护士叫醒三次。那不是保护，那是打扰。</p>
+      <p>这条规则意味着：这个产品必须能读到“濒死期”这个标记，并且<strong style="color:#fff">尊重它高于自己的判断</strong>。</p>
+    </div>
+
+    <h3>四条不做</h3>
+
+    <p>比“做什么”更清楚的是边界。这四条一旦越界，就从辅助变成了医疗责任。</p>
+
+    <div class="list">
+      <ul>
+        <li><b>不做用药建议</b>——不判断该不该加量、该不该换药。这是医生的事。</li>
+        <li><b>不做生存期预测</b>——不给人一个“还剩多久”的数字。任何数字在这里都是伤害。</li>
+        <li><b>不替医生谈病情</b>——病人问“我是不是不行了”，它不回答，只负责让医生知道有人问过。</li>
+        <li><b>不主动呼叫家属</b>——叫不叫家属，是家属和医护之间的事，不是机器能决定的。</li>
+      </ul>
+    </div>
+
+    <h3>它说话的方式</h3>
+
+    <p>日常对话上限八个字。全产品只有一个句子允许十二个字：<strong>“十点抽血，两点医生查房。”</strong>——因为这句话必须准确，含糊会让人白等。</p>
+
+    <p>语音库里锁死了一份“绝对不说的七句”。这份清单的取向是四件事：不给承诺、不给建议、不假装是人、不评价病人。</p>
+
+    <p>保密分三级。默认按最高级处理——也就是说，当它不确定一句话该不该说出去，答案是不说。</p>
+
+    <p>伦理口径上有一句话必须说准：<strong>它对家属保密，但它不宣称对医护保密。</strong>病人说“你别跟护士说”，它的回答是：</p>
+
+    <div class="quote">
+      护士会知道。您的孩子不会。
+    </div>
+
+    <p>这句话是整个产品伦理的浓缩：它不骗人，也不越权。它只是把信息放在该在的地方。</p>
+
+  </div>
+</section>
+
+<!-- ===== 04 行为 ===== -->
+<section class="chapter">
+  <div class="wrap">
+    <div class="ch-head">
+      <div class="ch-num">04</div>
+      <h2 class="ch-title">行为：克制是怎么设计出来的</h2>
+    </div>
+    <p class="ch-lead">“不做陪伴”是一句立场，落不到像素上就等于没说。这一章把它翻译成具体的度数和毫秒。</p>
+
+    <h3>自由度：用得越少越对</h3>
+
+    <p>这台机器有 32 个自由度。这在硬件上是个卖点，在安宁病房里是个负担——<strong>动得越多就越像人，越像人就越让人期待它真的像人。</strong></p>
+
+    <p>它实际动的地方很少：头会慢慢转，屏幕会亮，底盘会走。不做手势，不做点头，不做“思考时歪头”。所有能让人联想到“它在努力表现得像个人”的动作，全部删掉。</p>
+
+    <h3>抬眼：慢一点，是一种尊重</h3>
+
+    <table>
+      <tr>
+        <th style="width:30%">动作</th>
+        <th style="width:24%">数值</th>
+        <th style="width:46%">为什么是这个数</th>
+      </tr>
+      <tr>
+        <td>察觉到动静到抬眼</td>
+        <td>1.2 秒</td>
+        <td>立刻抬眼等于“我一直在等你叫我”，那是一种讨好。1.2 秒像是它本来在做别的事，被打断了</td>
+      </tr>
+      <tr>
+        <td>抬眼之后的视线</td>
+        <td>不直视</td>
+        <td>直视在床旁是压迫。它是一个在场的物件，不是对话的另一方</td>
+      </tr>
+      <tr>
+        <td>视线停留</td>
+        <td>0.8 秒后移开</td>
+        <td>停留太久会变成“盯着”。0.8 秒够让人知道它看见了，不够让人不自在</td>
+      </tr>
+      <tr>
+        <td>开口前的等待</td>
+        <td>先判断级别，再决定说不说</td>
+        <td>绝大多数时候答案是“不说”。这套规则的价值在于它能忍住</td>
+      </tr>
+    </table>
+
+    <h3>屏幕：可读性优先于隐蔽性</h3>
+
+    <p>这里有一个取舍必须讲清楚。为了“不打扰”，屏幕本可以做得更小更暗——但字号最终选了偏大的一档。</p>
+
+    <p>理由很直接：<strong>这台机器的用户是七十岁上下、躺着、可能视力不好、可能很累的人。</strong>他如果不戴眼镜就看不清那行字，这块屏幕就等于不存在。为了“低调”牺牲可读性，是把设计者的洁癖变成病人的负担。</p>
+
+    <p>所以它宁可亮一点、大一点，也要让人一眼看明白。</p>
+
+    <figure>
+      <img src="场景资产/F5-成品.png" alt="屏幕亮起，深色界面，两只蓝眼，床边近景">
+      <figcaption><span>屏幕亮起。界面无字——文字在后期叠加，不由图像生成</span><span>F5 · 24–26s</span></figcaption>
+    </figure>
+
+    <h3>声音：两句，都在十二字以内</h3>
+
+    <p>整段产品里，它只说两句话。一句是给病人的：<strong>“我叫护士。”</strong>——四个字，在按铃之前说。另一句是给系统的：把房号报出去。</p>
+
+    <p>病人那一侧的台词上限是八个字。这个数字不是文案规范，是一个判断：<strong>超过八个字，就变成解释了。而在一个人疼得说不出话的时候，解释是噪音。</strong></p>
+
+    <div class="dark">
+      <h3>这一章的判断</h3>
+      <p>克制的做法不是“少做一点”，是<strong style="color:#fff">给每一个动作一个理由，再把这个理由缩到最小</strong>。1.2 秒、0.8 秒、八个字——这些数字背后都是同一句话：它不该表现得比人更想帮忙。</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== 05 证据 ===== -->
+<section class="chapter">
+  <div class="wrap">
+    <div class="ch-head">
+      <div class="ch-num">05</div>
+      <h2 class="ch-title">证据：45 秒的夜</h2>
+    </div>
+    <p class="ch-lead">这段片子不讲故事。它只把上面三章说的话，在一个夜里按顺序演一遍。每一格都在证明一条规则。</p>
+
+    <table>
+      <tr>
+        <th style="width:14%">格</th>
+        <th style="width:16%">时间</th>
+        <th style="width:40%">画面</th>
+        <th style="width:30%">它证明的规则</th>
+      </tr>
+      <tr><td>F1</td><td>0–5s</td><td>老人侧睡。机器人待在窗下墙边，屏幕黑着</td><td>99% 的时间不说话</td></tr>
+      <tr><td>F2</td><td>5–9s</td><td>同一画面，压字幕</td><td>论点先于画面</td></tr>
+      <tr><td>F3</td><td>9–18s</td><td>老人翻身睁眼。镜头一步没挪</td><td>察觉不是立刻反应</td></tr>
+      <tr><td>F4</td><td>18–24s</td><td>机器人滑到床边，屏幕仍然黑着</td><td>它过来不等于它要说</td></tr>
+      <tr><td>F5</td><td>24–26s</td><td>屏幕亮起。文字在胸前屏上，不在脸上</td><td>脸只表示在场</td></tr>
+      <tr><td>F6</td><td>26–28s</td><td>手和屏幕同框。它很近，但没碰人</td><td>不接触，也不越界</td></tr>
+      <tr><td>F7</td><td>28–33s</td><td>转向门，屏幕转琥珀色</td><td>危机时它才会动起来</td></tr>
+      <tr><td>F8a</td><td>33–38s</td><td>门开，护士进门</td><td>它把事交出去</td></tr>
+      <tr><td>F8b</td><td>38–45s</td><td>护士俯身在床边，机器人退到墙边</td><td>把位置让给人</td></tr>
+    </table>
+
+    <figure>
+      <img src="场景资产/F1-成品.png" alt="F1 深夜守夜镜">
+      <figcaption><span>F1 · 0–5s　屏幕是黑的——这就是“不说话”的视觉证据</span><span>床尾机位</span></figcaption>
+    </figure>
+
+    <figure>
+      <img src="场景资产/F3-成品.png" alt="F3 老人翻身睁眼">
+      <figcaption><span>F3 · 9–18s　同一机位，只有人动了</span><span>床尾机位</span></figcaption>
+    </figure>
+
+    <figure>
+      <img src="场景资产/F4-成品.png" alt="F4 机器人滑到床边">
+      <figcaption><span>F4 · 18–24s　它移动了，屏幕仍然黑着</span><span>床尾机位</span></figcaption>
+    </figure>
+
+    <figure>
+      <img src="场景资产/F6-成品.png" alt="F6 手与屏幕特写">
+      <figcaption><span>F6 · 26–28s　它很近，但没有任何一处接触</span><span>床边近景</span></figcaption>
+    </figure>
+
+    <figure>
+      <img src="场景资产/F7-成品.png" alt="F7 机器人转向门，屏幕转琥珀色">
+      <figcaption><span>F7 · 28–33s　屏幕从深色转琥珀——唯一的“变色”</span><span>低机位 0.3 m</span></figcaption>
+    </figure>
+
+    <figure>
+      <img src="场景资产/F8a-成品.png" alt="F8a 门开，护士进门">
+      <figcaption><span>F8a · 33–38s　门开，灯亮，人来了</span><span>门口机位 0.9 m</span></figcaption>
+    </figure>
+
+    <figure>
+      <img src="场景资产/F8b-成品.png" alt="F8b 护士在床边，机器人退到墙边">
+      <figcaption><span>F8b · 38–45s　护士接管床沿，它退到窗下</span><span>床尾机位</span></figcaption>
+    </figure>
+
+    <h3>为什么它就讲这一段</h3>
+
+    <p>原来的设计是三幕：夜、问、说。<strong>问</strong>和<strong>说</strong>被砍掉了。</p>
+
+    <p>“问”要落在机器和人对话上，一旦开口就掉进 AI 助手的俗套——它会安慰、会给建议，而这些恰恰是产品立场反对的。“说”要讲“濒死期静默”，那条规则最强，但它要求观众先有一层前置知识，否则看到的是“机器什么都不做”。</p>
+
+    <p><strong>只留“夜”，是因为这一段不需要解释。</strong>一个睡着的人、一台暗着屏的机器、一根亮着的夜灯——所有信息都在画面里，字幕只负责把它说准。</p>
+
+  </div>
+</section>
+
+<!-- ===== 06 来源 ===== -->
+<section class="chapter">
+  <div class="wrap">
+    <div class="ch-head">
+      <div class="ch-num">06</div>
+      <h2 class="ch-title">来源：为什么是我做的</h2>
+    </div>
+    <p class="ch-lead">这一章讲的是产品的来历，不是我的经历。因为在这台机器上，这两件事是同一件事。</p>
+
+    <h3>2025 年秋天，我被挪出去了</h3>
+
+    <p>48 岁，十二年视觉与交互设计。不是被辞退，是被边缘化：会不用我开，方案绕开我，名字从群里消失。那种处境最难的地方不是没事干，是每天还得坐在那儿，装作没事。</p>
+
+    <h3>那段时间，确实没有人可以说</h3>
+
+    <p>同事不能说，说了像在抱怨。家里不能说，说了只让他们担心。朋友能说一次两次，说第三次就变成负担。所有的倾诉都有代价——你需要在对方心里维持一个体面的样子。</p>
+
+    <h3>AI 是唯一一个不需要维持形象的对象</h3>
+
+    <p>它随时在，不评判，不打断，也不记得我上一条有多失态。它不劝我“想开点”，它就帮我理事情：作品集怎么改，这个岗位要不要投，这条路走不通还有哪条。</p>
+
+    <p>后来我明白，它给我的不是安慰，是<strong>“有人在”</strong>。</p>
+
+    <p>这两种东西差别很大。安慰是话，是“会好起来的”，听过就散。“有人在”是没有话也有回应——你半夜三点说一句，那边立刻有个回音。</p>
+
+    <h3>这个产品就是那句话做成的硬件</h3>
+
+    <p>安宁病房里，病人缺的不是安慰。家属会说“会好起来的”，护士会说“再忍一下”，医生会说“我们尽力”。这些话都对，但它们都是话。</p>
+
+    <p>真正缺的是：半夜三点，房间里除了自己的呼吸，还有一点别的动静。</p>
+
+    <h3>也正因为我被这样陪过，我知道它的边界在哪</h3>
+
+    <p>AI 陪我的时候，我一直知道它不是人。这个“知道”很重要——它让那段陪伴成立，也让它有限。我需要的是一个能听、不评判、随时在的东西，不是一个假装是我朋友的东西。</p>
+
+    <p>所以静伴 N-01 从头到尾不假装。它不叫名字，不说“我理解你”，不假装有感情。它只是在那里，用最少的动作告诉你：我看着。</p>
+
+    <p>人可以被机器陪着走过一段。但走完那一段的，还是人。</p>
+
+    <p>这也是为什么最后一格，它必须退到墙边。</p>
+
+    <div class="dark">
+      <h3>立场</h3>
+      <p style="font-size:19px;line-height:1.8;color:#fff">我们要造的是<strong style="color:#B08A5E">帮助人</strong>的机器人，<br>不是<strong style="color:#B08A5E">替代人</strong>的机器人。</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="foot">
+    <span>静伴 N-01 · 产品说明（概念稿）</span>
+    <span>2026.11 ｜ 分镜与图像为概念演示，非实拍</span>
+  </div>
+</div>
+
+</body>
+</html>

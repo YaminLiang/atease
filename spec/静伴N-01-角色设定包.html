@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>静伴 N-01 · 角色设定包</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%2312181C'/><circle cx='11' cy='14' r='2.4' fill='%235B8FA8'/><circle cx='21' cy='14' r='2.4' fill='%235B8FA8'/><rect x='9' y='22' width='14' height='1.6' fill='%23B08A5E'/></svg>">
+<style>
+:root{
+  --paper:#F4F3F0;
+  --ink:#1A1A1A;
+  --ink-2:#3C3A36;
+  --gray:#6B6862;
+  --line:#D8D4CC;
+  --sand:#B08A5E;
+  --cool:#3F5F70;
+  --night:#12181C;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:-apple-system,"PingFang SC","Helvetica Neue",sans-serif;
+  font-size:16px;
+  line-height:1.95;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:880px;margin:0 auto;padding:0 32px}
+
+.cover{min-height:86vh;display:flex;flex-direction:column;justify-content:center;padding:80px 0 60px;border-bottom:1px solid var(--line)}
+.kicker{font-size:12px;letter-spacing:.18em;color:var(--gray);margin-bottom:36px}
+.cover h1{font-family:Georgia,"Songti SC","Noto Serif SC",serif;font-size:clamp(36px,5.6vw,60px);line-height:1.2;font-weight:400;letter-spacing:-.01em}
+.cover h1 em{font-style:normal;color:var(--sand)}
+.cover .sub{margin-top:28px;max-width:580px;font-size:17px;color:var(--ink-2);line-height:1.85}
+.cover .meta{margin-top:56px;display:flex;gap:40px;flex-wrap:wrap;font-size:12px;letter-spacing:.06em;color:var(--gray)}
+.cover .meta b{display:block;color:var(--ink);font-weight:500;font-size:13px;margin-top:4px;letter-spacing:0}
+
+.chapter{padding:84px 0 24px;border-bottom:1px solid var(--line)}
+.ch-head{display:flex;gap:20px;align-items:baseline;margin-bottom:40px}
+.ch-num{font-family:Georgia,serif;font-size:13px;letter-spacing:.1em;color:var(--sand);flex:0 0 auto;padding-top:6px}
+.ch-title{font-family:Georgia,"Songti SC","Noto Serif SC",serif;font-size:clamp(25px,3.3vw,33px);font-weight:400;line-height:1.4}
+.ch-lead{font-size:17px;color:var(--ink-2);max-width:660px;margin:-18px 0 40px 0}
+
+h3{font-size:15px;font-weight:600;letter-spacing:.02em;margin:44px 0 12px}
+h4{font-size:14px;font-weight:600;letter-spacing:.04em;color:var(--cool);margin:28px 0 8px}
+p{margin-bottom:16px;max-width:670px}
+p.tight{color:var(--ink-2)}
+.small{font-size:13.5px;color:var(--gray);line-height:1.8;max-width:670px}
+
+.quote{border-left:2px solid var(--sand);padding:2px 0 2px 24px;margin:30px 0;max-width:620px;font-family:Georgia,"Songti SC",serif;font-size:18px;line-height:1.8;color:var(--ink)}
+.quote cite{display:block;margin-top:12px;font-style:normal;font-family:-apple-system,sans-serif;font-size:12px;letter-spacing:.06em;color:var(--gray)}
+
+.list{margin:18px 0 26px;max-width:680px}
+.list li{list-style:none;padding:12px 0 12px 26px;border-top:1px solid var(--line);position:relative;font-size:15px;color:var(--ink-2)}
+.list li:before{content:"";position:absolute;left:2px;top:21px;width:10px;height:1px;background:var(--sand)}
+.list li b{color:var(--ink);font-weight:600}
+
+table{width:100%;border-collapse:collapse;margin:22px 0 26px;font-size:13.5px;table-layout:fixed}
+th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.65}
+th{font-weight:600;font-size:11.5px;letter-spacing:.06em;color:var(--gray);border-bottom:1px solid var(--ink);border-top:1px solid var(--ink)}
+td:first-child{color:var(--ink);font-weight:500}
+
+figure{margin:36px 0 40px}
+figure img{width:100%;display:block;border:1px solid var(--line)}
+figcaption{margin-top:10px;font-size:12px;letter-spacing:.04em;color:var(--gray);display:flex;justify-content:space-between;gap:16px}
+
+.dark{background:var(--night);color:#E8E6E1;padding:40px 40px;margin:42px -40px}
+.dark h3{color:#fff;margin-top:0}
+.dark p{color:#B8B6B0}
+.dark .list li{border-color:#2A3238;color:#B8B6B0}
+.dark .list li b{color:#E8E6E1}
+
+/* 角色卡 */
+.card{border:1px solid var(--line);background:#fff;padding:28px 28px 22px;margin:24px 0 28px;max-width:700px}
+.card h4{margin-top:0}
+.card dl{display:grid;grid-template-columns:88px 1fr;gap:8px 14px;font-size:14px;margin-top:14px}
+.card dt{color:var(--gray);letter-spacing:.04em}
+.card dd{color:var(--ink-2)}
+
+/* 平面图 */
+.plan{border:1px solid var(--line);background:#fff;padding:14px;margin:24px 0 10px}
+.plan svg{width:100%;display:block}
+
+.foot{padding:60px 0 96px;font-size:12px;color:var(--gray);letter-spacing:.06em;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+
+@page{size:A4;margin:14mm}
+@media print{
+  body{background:#fff;font-size:11.5pt}
+  .cover{min-height:auto;padding:40px 0 40px}
+  .chapter{padding:34px 0 8px;break-inside:auto}
+  .dark{margin:26px 0;padding:24px 20px}
+  h3{break-after:avoid}
+  figure,table,.card{break-inside:avoid}
+}
+@media (max-width:680px){
+  .wrap{padding:0 20px}
+  .cover{min-height:auto;padding:60px 0 44px}
+  .chapter{padding:60px 0 16px}
+  .ch-head{flex-direction:column;gap:8px;margin-bottom:30px}
+  .ch-num{padding-top:0}
+  .dark{padding:30px 22px;margin:30px -22px}
+  th,td{padding:9px 7px}
+  table{font-size:12.5px}
+  .card{padding:22px 18px}
+  .card dl{grid-template-columns:74px 1fr}
+}
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div class="wrap">
+    <div class="kicker">静伴 N-01 ｜ 角色设定包 · Character Bible</div>
+    <h1>把它拆开，<br>才知道它<em>为什么会这样</em>。</h1>
+    <p class="sub">一个机器人的可信度，不在造型好不好看，而在每个模块都有必须存在的理由，每个理由都能对上医院里的一条具体限制。这份包把一台床旁机器人拆成七个模块、三个点位、三段短戏。</p>
+    <div class="meta">
+      <div>用途<b>提案 / 招募 / 接单样稿</b></div>
+      <div>设定范围<b>院内安宁疗护病区</b></div>
+      <div>版本<b>2026.11 ／ 概念设定</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- 00 -->
+<section class="chapter">
+  <div class="wrap">
+    <div class="ch-head">
+      <div class="ch-num">00</div>
+      <h2 class="ch-title">一句话设定</h2>
+    </div>
+    <p class="ch-lead">先把最要紧的说清楚，后面的模块和点位都是这句话的展开。</p>
+
+    <div class="quote">
+      一台默认沉默的床旁单元：不陪聊、不碰人、不做承诺。<br>它替代的不是护士，是夜里那段没有人守着的时间。
+    </div>
+
+    <p class="small">本包中所有尺寸、时长、噪声与照度为概念设定值，用于对齐造型与交互；落地前须按目标病区实测复核。文中不出现具体医院名称与可识别信息。</p>
+  </div>
+</section>
+
+<!-- 01 世界观 -->
+<section class="chapter">
+  <div class="wrap">
+    <div class="ch-head">
+      <div class="ch-num">01</div>
+      <h2 class="ch-title">世界观：一间病房里的两个世界</h2>
+    </div>
+    <p class="ch-lead">静伴的世界不是未来都市，是一间病房的二十四小时。它的“世界观”就是这套时间与权力的秩序。</p>
+
+    <h3>昼与夜不是同一个地方</h3>
+    <p>白天这里很满：查房、交班、家属、社工、心理师。疼痛被问到，症状被记录，有人递水，有人说话。</p>
+    <p>夜里这些都会退场。灯关掉，人走掉，剩下床、监护仪、一瓶水。这段时间里，人是<strong>间隔出现</strong>的，症状是<strong>连续变化</strong>的——中间的空白，就是这个产品存在的理由。</p>
+
+    <h3>三条世界规则</h3>
+    <div class="list"><ul>
+      <li><b>不打扰优先</b>——任何动作，先问“会不会让病人多醒一次”。宁可少做，不可多做。</li>
+      <li><b>信息归位</b>——病人说的话归护士，护士的判断归医生，家属的知情归家属自己决定。它只负责把信息送到该在的地方，不替任何人传达情绪。</li>
+      <li><b>人高于机器</b>——人一进门，它自动降级为物件：退到墙边，屏幕压暗，不再发言。</li>
+    </ul></div>
+
+    <h3>两条禁忌</h3>
+    <div class="list"><ul>
+      <li><b>不做替代陪伴</b>——不叫名字、不说“我理解你”、不假装有感情。人和人的接触在这里不可替代。</li>
+      <li><b>不做生存期预测</b>——不给“还剩多久”的数字。在这个房间里，任何数字都是伤害。</li>
+    </ul></div>
+
+    <div class="dark">
+      <h3>世界观的一句话</h3>
+      <p>这个世界里没有反派。<strong style="color:#fff">唯一的对手是“空档”</strong>——那段没有人守着、又必须有人看着的时间。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 主角 -->
+<section class="chapter">
+  <div class="wrap">
+    <div class="ch-head">
+      <div class="ch-num">02</div>
+      <h2 class="ch-title">主角：静伴 N-01</h2>
+    </div>
+
+    <figure>
+      <img src="assets/四视图.png" alt="静伴 N-01 四视图：正面、左侧、背面、左前 45 度">
+      <figcaption><span>正面 / 左侧 / 背面 / 左前 45°</span><span>整机 1.15 m ｜ 头径 0.28 m ｜ 底盘宽 0.40 m</span></figcaption>
+    </figure>
+
+    <div class="card">
+      <h4>角色卡</h4>
+      <dl>
+        <dt>身份</dt><dd>院内安宁疗护病区的床旁值守单元，工程名 JINGBAN-N01</dd>
+        <dt>年龄感</dt><dd>不设定。它不扮演任何年龄、性别、亲属关系</dd>
+        <dt>性格</dt><dd>克制、慢、不讨好。像一位不擅寒暄但从不缺席的夜班人员</dd>
+        <dt>动机</dt><dd>替人守住空档。它不为被喜欢而存在</dd>
+        <dt>语气</dt><dd>陈述句，不用感叹号，不用第二人称劝慰，不反问</dd>
+        <dt>台词上限</dt><dd>日常八个字；全程只有一句十二个字：“十点抽血，两点医生查房。”</dd>
+        <dt>肢体语汇</dt><dd>抬眼、亮屏、转身、退让。共四种，不做手势、不点头、不歪头</dd>
+        <dt>绝不说</dt><dd>“我理解你”“会好起来的”“别担心”“还剩……”“你应该……”</dd>
+        <dt>外观约束</dt><dd>圆润、哑光、无尖角；整张脸是深色面罩，不是显示屏；没有手臂，只有圆形肩块</dd>
+        <dt>识别特征</dt><dd>白方底盘加一圈极细青色灯带——夜间唯一的位置标记</dd>
+      </dl>
+    </div>
+
+    <p>它的“人格”其实只有一件事：<strong>能忍住</strong>。绝大多数时候它的正确行为是记录下来、什么也不做。这套克制的设计，比任何表情动画都难做——因为它要求产品经理敢让一个昂贵的东西整晚保持沉默。</p>
+  </div>
+</section>
+
+<!-- 03 配角 -->
+<section class="chapter">
+  <div class="wrap">
+    <div class="ch-head">
+      <div class="ch-num">03</div>
+      <h2 class="ch-title">配角：三个不说话的对手戏</h2>
+    </div>
+    <p class="ch-lead">机器人的设定，一半写在它自己身上，一半写在它对面的人身上。这三者决定了它的分寸。</p>
+
+    <h3>夜班护士 · 它唯一的上级</h3>
+    <p>一个人管若干床位，巡房按班次排、不按需要排。她对机器的要求很具体：<strong>别在我忙的时候叫我，叫我就得是真事</strong>。所以 L4 不重复报警，改成报“最近的护士在哪里”——把一次报警变成一次调度。她也是唯一有权把病人标记为“濒死期”的人，而这个标记<strong>高于机器自己的判断</strong>。</p>
+
+    <h3>病人 · 它不能讨好的对象</h3>
+    <p>七十岁上下，躺着，可能视力不好，可能很累。他最常做的决定是“不按铃”——不想麻烦人。所以机器不能等他求助，只能看趋势；也不能主动开口，因为一开口就成了“你要不要帮忙”，又把决定推回给他。</p>
+
+    <h3>家属 · 它必须保密的对象</h3>
+    <p>家属的缺位不是不孝，是结构性的：要上班、要照顾孩子、要自己扛住。伦理口径明确：不主动呼叫家属、不替医生谈病情。病人说“你别跟护士说”，它的回答只有一句：</p>
+    <div class="quote">护士会知道。您的孩子不会。</div>
+    <p class="small">这句话是整套伦理的浓缩：不骗人，也不越权。</p>
+  </div>
+</section>
+
+<!-- 04 模块拆解 -->
+<section class="chapter">
+  <div class="wrap">
+    <div class="ch-head">
+      <div class="ch-num">04</div>
+      <h2 class="ch-title">模块拆解：七个模块，七条医院限制</h2>
+    </div>
+    <p class="ch-lead">“显得真实”的做法不是加细节，是让每个细节都能追到一条现场约束。以下每一行都写了三件事：它做什么、为什么这么做、坏掉时怎么退。</p>
+
+    <table>
+      <tr>
+        <th style="width:15%">模块</th>
+        <th style="width:30%">功能</th>
+        <th style="width:33%">为什么是这样（医院约束）</th>
+        <th style="width:22%">失效时怎么降级</th>
+      </tr>
+      <tr>
+        <td>M1 头部<br><span class="small">深色面罩 · 双低亮蓝点</span></td>
+        <td>只表达“在场 / 不在看”。不承载文字，不发光成灯。</td>
+        <td>会发光的脸在夜里等于一盏灯，影响同室与其他床位睡眠；面罩哑光可减少夜灯反射。</td>
+        <td>面罩故障只灭点，不报警；身份识别退回底盘灯带。</td>
+      </tr>
+      <tr>
+        <td>M2 躯干与胸屏<br><span class="small">屏心离地 0.95 m</span></td>
+        <td>一行字、极简图标。字号偏大，亮度自适应。</td>
+        <td>高出床面 35 cm 是躺着能看清、又不必起身的角度；用户视力与体力都受限，可读性优先于隐蔽性。</td>
+        <td>屏坏则只用语音（限 L3）；两样都坏则只保留本地蜂鸣与灯带。</td>
+      </tr>
+      <tr>
+        <td>M3 背部感知仓<br><span class="small">毫米波 + 麦阵列 + 低照度相机</span></td>
+        <td>呼吸、体动、离床、跌倒、异常声（呻吟、呼噜、呼叫）。</td>
+        <td>病房不许布线路由、不许频繁补光，所以用非接触雷达；摄像头只在本地算，不出图、不上云，避免隐私与合规风险。</td>
+        <td>雷达失效降级为“离床/跌倒”单一判断；相机失效不影响主流程。</td>
+      </tr>
+      <tr>
+        <td>M4 底盘<br><span class="small">宽 0.40 m · 双轮差速</span></td>
+        <td>床旁就位、退让、回充电位。夜间 0.30 m/s，日间 0.60 m/s。</td>
+        <td>病区门净宽常见 0.9 m 起，0.40 m 车身留出双侧让行；地面多为 PVC 卷材，过槛能力按 ≤15 mm 设计。</td>
+        <td>卡住即停并亮琥珀灯，等人工推移；不做自救式反复挪动（会吵醒病人）。</td>
+      </tr>
+      <tr>
+        <td>M5 电源<br><span class="small">值守 8 h · 充电 2.5 h</span></td>
+        <td>夜间整班值守；回护士站侧墙充电位补电。</td>
+        <td>夜班时长决定续航下限；充电位必须离开床旁，避免线缆绊人与跨床感染。</td>
+        <td>低于 20% 自动回充并通知护理站；返程失败则原地进入“只报不动”模式。</td>
+      </tr>
+      <tr>
+        <td>M6 消毒与感控<br><span class="small">无风扇外露 · 缝隙 &lt;1 mm</span></td>
+        <td>每日含氯或酒精湿巾整机擦拭；进隔离病房前套一次性罩袋。</td>
+        <td>病区感染控制是硬要求：外壳必须可擦拭、不能藏灰、不能有难清洁的缝；紫外线方案对人眼有风险，不采用。</td>
+        <td>罩袋缺货则该床不派机，退回人工巡房——宁可不进，不带菌进。</td>
+      </tr>
+      <tr>
+        <td>M7 通信<br><span class="small">院内网 · 数据不出院</span></td>
+        <td>与护理站对接分级、房号、交接记录。</td>
+        <td>院内网络隔离、患者数据不出院是底线；报警必须能在断网时仍成立。</td>
+        <td>断网即本地 L3：自鸣 + 灯带转琥珀 + 走廊侧屏提示房号，不依赖服务器。</td>
+      </tr>
+    </table>
+
+    <p class="small">七个模块里，只有 M1、M2、M4 是“角色表演”用得到的；其余四个都在后台。这正是一个机器人可信的地方——真正让它成立的部分，观众看不见。</p>
+  </div>
+  </section>
+
+
+<!-- 05 医院环境 -->
+<section class="chapter">
+  <div class="wrap">
+    <div class="ch-head">
+      <div class="ch-num">05</div>
+      <h2 class="ch-title">环境：三个点位与一条巡行线</h2>
+    </div>
+    <p class="ch-lead">机器人对空间的理解只有四件事：我站哪、我退哪、我怎么走、我在哪睡。把这四个答案定死，造型才有地方落。</p>
+
+    <div class="plan">
+      <svg viewBox="0 0 800 420" role="img" aria-label="安宁疗护病区平面示意：病房、走廊、护士站、充电位与三个机器人点位">
+        <rect x="0" y="0" width="800" height="420" fill="#fff"/>
+        <!-- 走廊 -->
+        <rect x="0" y="250" width="800" height="70" fill="#F4F3F0" stroke="#D8D4CC"/>
+        <text x="16" y="292" font-size="12" fill="#6B6862" font-family="-apple-system,sans-serif">走廊 · 净宽 2.2 m ｜ 巡行贴墙 0.3 m</text>
+        <!-- 病房 1 -->
+        <rect x="40" y="40" width="220" height="190" fill="#fff" stroke="#D8D4CC"/>
+        <text x="52" y="62" font-size="12" fill="#3C3A36" font-family="-apple-system,sans-serif">单人间 A</text>
+        <rect x="60" y="90" width="130" height="46" fill="#F4F3F0" stroke="#D8D4CC"/>
+        <text x="70" y="118" font-size="11" fill="#6B6862" font-family="-apple-system,sans-serif">病床</text>
+        <!-- 床旁主位 -->
+        <circle cx="205" cy="150" r="9" fill="#3F5F70"/>
+        <text x="196" y="178" font-size="11" fill="#3F5F70" font-family="-apple-system,sans-serif">P1 主位</text>
+        <!-- 退让位 -->
+        <circle cx="215" cy="205" r="7" fill="none" stroke="#B08A5E" stroke-width="1.6"/>
+        <text x="186" y="228" font-size="11" fill="#B08A5E" font-family="-apple-system,sans-serif">P2 退让位</text>
+        <!-- 病房 2 -->
+        <rect x="320" y="40" width="220" height="190" fill="#fff" stroke="#D8D4CC"/>
+        <text x="332" y="62" font-size="12" fill="#3C3A36" font-family="-apple-system,sans-serif">单人间 B</text>
+        <rect x="340" y="90" width="130" height="46" fill="#F4F3F0" stroke="#D8D4CC"/>
+        <circle cx="485" cy="150" r="9" fill="#3F5F70"/>
+        <circle cx="495" cy="205" r="7" fill="none" stroke="#B08A5E" stroke-width="1.6"/>
+        <!-- 护士站 -->
+        <rect x="600" y="40" width="160" height="190" fill="#fff" stroke="#D8D4CC"/>
+        <text x="612" y="62" font-size="12" fill="#3C3A36" font-family="-apple-system,sans-serif">护士站</text>
+        <rect x="618" y="80" width="124" height="34" fill="#F4F3F0" stroke="#D8D4CC"/>
+        <text x="626" y="102" font-size="11" fill="#6B6862" font-family="-apple-system,sans-serif">分级看板</text>
+        <circle cx="676" cy="196" r="8" fill="#12181C"/>
+        <text x="646" y="224" font-size="11" fill="#6B6862" font-family="-apple-system,sans-serif">P3 充电位</text>
+        <!-- 巡行线 -->
+        <line x1="60" y1="332" x2="740" y2="332" stroke="#3F5F70" stroke-width="1.2" stroke-dasharray="6 6"/>
+        <text x="16" y="356" font-size="11" fill="#3F5F70" font-family="-apple-system,sans-serif">巡行线：只走靠墙一侧，进房前 0.5 m 减速至 0.2 m/s，门口停留不超过 3 s</text>
+        <text x="16" y="386" font-size="11" fill="#6B6862" font-family="-apple-system,sans-serif">门净宽 0.9 m 以上 ｜ 地面 PVC 卷材 ｜ 过槛 ≤15 mm ｜ 熄灯后病房 0.5–1 lx、走廊约 5 lx</text>
+      </svg>
+    </div>
+
+    <table>
+      <tr>
+        <th style="width:16%">点位</th>
+        <th style="width:24%">位置</th>
+        <th style="width:60%">为什么是这个位置</th>
+      </tr>
+      <tr>
+        <td>P1 主位</td>
+        <td>床尾左前方 0.9 m，距床沿 0.6 m</td>
+        <td>在病人侧躺时的自然视野内，又不挡住护理操作面；离床 0.6 m 是不接触、但能看清表情与呼吸的距离。</td>
+      </tr>
+      <tr>
+        <td>P2 退让位</td>
+        <td>窗下墙边 0.5 m</td>
+        <td>人一进门，它必须让出床沿。退让位固定，是为了让护士不用每次猜“它现在在哪”。</td>
+      </tr>
+      <tr>
+        <td>P3 充电位</td>
+        <td>护士站侧墙，走廊可视</td>
+        <td>不在病床边充电：避免线缆绊人、避免跨床感染、也让夜班一眼能看到它是否在岗。</td>
+      </tr>
+    </table>
+
+    <h3>一间病房里它必须遵守的六条硬限制</h3>
+    <div class="list"><ul>
+      <li><b>噪声</b>——夜间移动整机 ≤42 dB(A) @1 m。任何提示音先降到最短一声。</li>
+      <li><b>照度</b>——熄灯后病房 0.5–1 lx，屏幕亮度自适应，绝不补光。</li>
+      <li><b>净宽</b>——车身 0.40 m，保证在 0.9 m 门与床侧通道内双侧让行。</li>
+      <li><b>地面</b>——PVC 卷材为主，遇湿滑区域自动降速；过槛按 ≤15 mm 设计，超出即绕行。</li>
+      <li><b>感控</b>——可整机擦拭、无风扇外露、缝隙 &lt;1 mm；进隔离病房必套罩袋。</li>
+      <li><b>数据</b>——影像本地处理、不出图；护理数据留院内，不出院、不上公有云。</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- 06 动作 -->
+<section class="chapter">
+  <div class="wrap">
+    <div class="ch-head">
+      <div class="ch-num">06</div>
+      <h2 class="ch-title">动作：四个动作，四种毫秒</h2>
+    </div>
+    <p class="ch-lead">性格不写在文案里，写在时长里。慢一点，是一种尊重；停一下，是一种分寸。</p>
+
+    <table>
+      <tr>
+        <th style="width:24%">动作</th>
+        <th style="width:22%">数值</th>
+        <th style="width:54%">为什么是这个数</th>
+      </tr>
+      <tr><td>察觉 → 抬眼</td><td>1.2 s</td><td>立刻抬眼等于“我一直在等你叫我”，那是讨好。1.2 s 像它本来在做别的事，被打断了。</td></tr>
+      <tr><td>视线停留</td><td>0.8 s 后移开</td><td>停留太久就是盯着。0.8 s 够让人知道它看见了，不够让人不自在。</td></tr>
+      <tr><td>转身 / 面向来人</td><td>2.4 s / 90°</td><td>转身要能被预判。太快像袭击，太慢像失灵。</td></tr>
+      <tr><td>退让</td><td>触发后 3 s 内离开床沿</td><td>人进门到走到床沿大约 3 s。它必须在这之前让开。</td></tr>
+    </table>
+
+    <figure>
+      <img src="assets/F8b-交接.png" alt="F8b：护士俯身在床边，机器人退到墙边">
+      <figcaption><span>交接：护士接管床沿，它退回窗下 P2</span><span>退让场景 · 概念演示</span></figcaption>
+    </figure>
+
+    <p class="small">这台机器有 32 个自由度，实际只用四处：头转、屏亮、底盘移动、灯带变色。动得越多越像人，越像人就越让人期待它真的像人——而它做不到，也不该承诺。</p>
+  </div>
+</section>
+
+<!-- 07 场景 -->
+<section class="chapter">
+  <div class="wrap">
+    <div class="ch-head">
+      <div class="ch-num">07</div>
+      <h2 class="ch-title">场景：三段短戏，把规则演一遍</h2>
+    </div>
+
+    <figure>
+      <img src="assets/F1-夜间.png" alt="F1：深夜，老人侧睡，机器人屏幕全黑">
+      <figcaption><span>场景一 · 夜里屏是黑的，这就是“不说话”的证据</span><span>床尾机位</span></figcaption>
+    </figure>
+
+    <h4>场景一 · 守夜（23:40–05:10）</h4>
+    <p>老人侧睡，呼吸忽深忽浅。它待在 P1，屏黑着，整夜只做记录。02:10 呼吸间隔偏离基线，L2：胸前屏出一行“呼吸 14 次/分”，不出声。老人没醒。它也没动。</p>
+    <p class="small">证明的是：有变化不等于要惊动人。人醒着的时候，机器最好的表现是无事发生。</p>
+
+    <h4>场景二 · 危机（05:12）</h4>
+    <p>体动骤停叠加呻吟频次上升，L3：屏转琥珀，开口四个字——“我叫护士。”同时报房号。90 秒无人到场，L4 不再重复响铃，改报最近护士位置。护士进门，它退到 P2，屏压暗。</p>
+    <p class="small">证明的是：报警的价值不在音量，在调度。而人来之后，它就只是件家具。</p>
+
+    <h4>场景三 · 白天提问（09:20）</h4>
+    <p>家属问：“它晚上会不会一直盯着我爸？”护士答：“它不看画面，只记呼吸和动作。”家属又问：“那它能陪他说话吗？”它不回答——这不是它的台词。</p>
+    <p class="small">证明的是：它一天里最像“角色”的时刻，是它主动放弃了发言权。</p>
+
+    <figure>
+      <img src="assets/F4-近床.png" alt="F4：机器人滑到床边，屏幕仍然黑着">
+      <figcaption><span>靠近不等于要说话：滑到床沿时屏仍是黑的</span><span>床尾机位</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- 08 延展 -->
+<section class="chapter">
+  <div class="wrap">
+    <div class="ch-head">
+      <div class="ch-num">08</div>
+      <h2 class="ch-title">延展：同一套设定，长成不同的机器人</h2>
+    </div>
+    <p class="ch-lead">模块化的意义在于可延展。同一个世界观下，改三个模块就能长出另一个角色。</p>
+
+    <table>
+      <tr>
+        <th style="width:18%">型号</th>
+        <th style="width:26%">场景</th>
+        <th style="width:30%">改哪些模块</th>
+        <th style="width:26%">性格差异</th>
+      </tr>
+      <tr>
+        <td>N-01 床旁型</td>
+        <td>安宁疗护单人间</td>
+        <td>基准型</td>
+        <td>克制、沉默、只记录</td>
+      </tr>
+      <tr>
+        <td>N-02 走廊型</td>
+        <td>病区转运、送物、夜间巡行</td>
+        <td>M4 底盘加大、M5 换快充、M2 屏改小</td>
+        <td>更像“同事”：会报路线、会让路、不进屋</td>
+      </tr>
+      <tr>
+        <td>N-03 居家型</td>
+        <td>失能老人家庭照护</td>
+        <td>M3 增跌倒与用药提醒、M7 改家庭网、加语音入口</td>
+        <td>话稍多，但仍不承诺、不劝慰</td>
+      </tr>
+    </table>
+
+    <p class="small">三台机器共享同一条底线：<strong>帮助人，不替代人</strong>。差异只在它们被允许说多少话。</p>
+
+    <div class="dark">
+      <h3>这份包能怎么用</h3>
+      <p>给甲方提案时，先给 00 一句话，再给 04 模块表——模块表本身就是“我懂现场”的证据。给招聘方看时，从 05 三个点位讲起，比讲造型更容易被记住。</p>
+      <p>配套：七页产品设定（PPT/PDF）、45 秒场景分镜、四视图与夜景图。</p>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="foot">
+    <span>静伴 N-01 · 角色设定包（概念稿）</span>
+    <span>2026.11 ｜ 尺寸与时长为设定值，落地需按病区实测复核</span>
+  </div>
+</div>
+
+</body>
+</html>
